@@ -1,0 +1,30 @@
+spring:
+  application:
+    name : Billing-Service
+  datasource:
+    url: jdbc:mysql://root:ufdaoJixJwsvNuKcCPCaHblieGtDmFAQ@monorail.proxy.rlwy.net:34640/railway?createDatabaseIfNotExist=true
+    username: root
+    password: ufdaoJixJwsvNuKcCPCaHblieGtDmFAQ
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.MySQLDialect
+
+    show-sql: true
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 0
+  #    hostname: auth-service-production-9d14.up.railway.app
+  #    metadata-map:
+  #      publicUrl: https://auth-service-production-9d14.up.railway.app
+  client:
+    service-url:
+      defaultZone : https://eurekaregistry-production.up.railway.app/eureka
+
+
+management:
+  endpoints:
+    web:
+      base-path : /
+      exposure:
+        include: "*"
