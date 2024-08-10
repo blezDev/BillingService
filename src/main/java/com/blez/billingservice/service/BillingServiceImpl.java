@@ -40,7 +40,7 @@ public class BillingServiceImpl implements BillingService {
             if (startDestination == null || endDestination == null || numberOfPassenger < 0 || kmPrice < 0) {
                 return new ResultState.Error<>("Provided details are invalid");
             }
-            CarpoolingRoute route = routeRepo.findByStartCityAndEndCity(startDestination, endDestination);
+            CarpoolingRoute route = routeRepo.findByStartCityAndEndCityIgnoreCase(startDestination, endDestination);
             int distanceBetween;
             if (route == null) {
                 distanceBetween = generateOTP(3);
