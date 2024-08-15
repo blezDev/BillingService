@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/bill")
 public class BillController {
@@ -46,6 +48,15 @@ public class BillController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseBody(error.getMessage(),error.getMessage()));
         }
 
+    }
+    @GetMapping("/getAllCities")
+    public ResponseEntity<List<CarpoolingRoute>> getAllCities(){
+        ResultState<List<CarpoolingRoute>> routes = billingService.getAllCarpoolingRoutes();
+        if (routes instanceof ResultState.Success<List<CarpoolingRoute>> success) {
+            return ResponseEntity.ok(success.getData());
+        }
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(routes.getData());
     }
 
 

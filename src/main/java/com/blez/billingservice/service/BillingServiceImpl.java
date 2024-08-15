@@ -81,4 +81,14 @@ public class BillingServiceImpl implements BillingService {
             return new ResultState.Error<>("Error in getting billing trip.");
         }
     }
+
+    @Override
+    public ResultState<List<CarpoolingRoute>> getAllCarpoolingRoutes() {
+        try {
+            List<CarpoolingRoute> routes = routeRepo.findAll();
+            return new ResultState.Success<>(routes);
+        }catch (Exception e) {
+            return new ResultState.Error<>("Error in getting  routes.");
+        }
+    }
 }

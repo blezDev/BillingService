@@ -14,4 +14,7 @@ public interface  RouteRepo extends JpaRepository<CarpoolingRoute, Integer> {
     @Query("SELECT r FROM CarpoolingRoute r WHERE LOWER(r.startCity) = LOWER(:startCity) AND LOWER(r.endCity) = LOWER(:endCity)")
     CarpoolingRoute findByStartCityAndEndCityIgnoreCase(@Param("startCity") String startCity, @Param("endCity") String endCity);
 
+
+
+
 }
