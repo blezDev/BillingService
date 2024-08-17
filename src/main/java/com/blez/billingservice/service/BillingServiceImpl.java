@@ -91,4 +91,22 @@ public class BillingServiceImpl implements BillingService {
             return new ResultState.Error<>("Error in getting  routes.");
         }
     }
+
+    @Override
+    public ResultState<String> addCarpoolingRoute(CarpoolingRoute carpoolingRoute) {
+        try {
+            carpoolingRoute.setDistanceInKm(generateOTP(3));
+            CarpoolingRoute city = routeRepo.findByStartCityAndEndCityIgnoreCase(carpoolingRoute.getStartCity(), carpoolingRoute.getEndCity());
+            if (city == null) {
+               routeRepo.save(carpoolingRoute);
+               return new ResultState.Success<>("ADDED");
+            }else{
+                return new ResultState.Success<>("ALREADY ADDED");
+            }
+
+
+        }catch (Exception e) {
+            return new ResultState.Error<>("Error in adding  routes.");
+        }
+    }
 }

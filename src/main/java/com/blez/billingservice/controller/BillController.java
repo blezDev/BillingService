@@ -59,5 +59,15 @@ public class BillController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(routes.getData());
     }
 
+    @PostMapping("/route/add")
+    public ResponseEntity<String> addRoute(@RequestBody CarpoolingRoute route){
+        ResultState<String> routes = billingService.addCarpoolingRoute(route);
+        if (routes instanceof ResultState.Success<String> success) {
+            return ResponseEntity.ok(success.getData());
+        }
+        else
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(routes.getData());
+    }
+
 
 }

@@ -14,4 +14,6 @@ public interface BillingService {
     public ResultState<PublishBillModel> getBillingPublish(String startDestination, String endDestination, int distanceBetween, int numberOfPassenger, int kmPrice, String carModel, String carNumber, String name);
 
     public ResultState<List<CarpoolingRoute>> getAllCarpoolingRoutes();
+
+    public ResultState<String> addCarpoolingRoute(CarpoolingRoute carpoolingRoute);
 }

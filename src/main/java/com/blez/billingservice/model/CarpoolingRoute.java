@@ -25,4 +25,10 @@ public class CarpoolingRoute {
 
     @Column(name = "DistanceInKm", nullable = false, precision = 6, scale = 2)
     private int distanceInKm;
+
+    public CarpoolingRoute(String startCity, String endCity, int distanceInKm) {
+        this.startCity = startCity;
+        this.endCity = endCity;
+        this.distanceInKm = distanceInKm;
+    }
 }
